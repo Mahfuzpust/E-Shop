@@ -1,4 +1,5 @@
-﻿using E_Shop.Models.Domain;
+﻿using E_Shop.Models;
+using E_Shop.Models.Domain;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,5 +12,7 @@ namespace E_Shop.Data
         {
 
         }
+
+        public DbSet<ProductTypes> ProductTypes { get; set; }
     }
 }
