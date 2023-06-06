@@ -23,6 +23,7 @@
         <tr>
             <th>Id</th>
             <th>ProductType</th>
+            <th>Action</th>
         </tr>
 
         @foreach (var data in Model)
@@ -30,6 +31,7 @@
             <tr>
                 <td>@data.Id</td>
                 <td>@data.ProductType</td>
+                <td>Edit | Details | Delete</td>
             </tr>
         }
     </table>
