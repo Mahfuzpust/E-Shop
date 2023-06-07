@@ -96,13 +96,40 @@ namespace E_Shop.Areas.Admin.Controllers
         }
 
         //Delete Product Types
-        public IActionResult Delete(int id)
+        public IActionResult Delete(int? id, ProductTypes model)
         {
-            var del = dBContext.ProductTypes.SingleOrDefault(u => u.Id == id);
-            dBContext.ProductTypes.Remove(del);
-            dBContext.SaveChanges();
-            return RedirectToAction(nameof(Index));
+            
+            if (id == null)
+            {
+                return NotFound();
+            }
+            if (id != model.Id)
+            {
 
+            }
+            var ProductType = dBContext.ProductTypes.FirstOrDefault(e => e.Id == id);
+            if (ProductType == null)
+            {
+                return NotFound();
+            }
+            return View(ProductType);
+        }
+
+        //Post Method Delete 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(ProductTypes model)
+        {
+            if (ModelState.IsValid)
+            {
+                dBContext.ProductTypes.Remove(model);
+                await dBContext.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return View(model);
+            }
         }
     }
 }
