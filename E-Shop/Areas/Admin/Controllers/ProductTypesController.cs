@@ -41,5 +41,68 @@ namespace E_Shop.Areas.Admin.Controllers
                 return View(model);
             }
         }
+
+        //Get Method Product Types Edit
+        public IActionResult Edit(int id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var ProductType = dBContext.ProductTypes.FirstOrDefault(e => e.Id == id);
+            if (ProductType == null)
+            {
+                return NotFound();
+            }
+            return View(ProductType);
+        }
+        //Post Method Edit 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(ProductTypes model)
+        {
+            if (ModelState.IsValid)
+            {
+                dBContext.ProductTypes.Update(model);
+                await dBContext.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return View(model);
+            }
+        }
+
+        //Get Method Product Types Details
+        public IActionResult Details(int id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var ProductType = dBContext.ProductTypes.FirstOrDefault(e => e.Id == id);
+            if (ProductType == null)
+            {
+                return NotFound();
+            }
+            return View(ProductType);
+        }
+        //Post Method Details 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Details(ProductTypes model)
+        {
+            return RedirectToAction(nameof(Index));
+        }
+
+        //Delete Product Types
+        public IActionResult Delete(int id)
+        {
+            var del = dBContext.ProductTypes.SingleOrDefault(u => u.Id == id);
+            dBContext.ProductTypes.Remove(del);
+            dBContext.SaveChanges();
+            return RedirectToAction(nameof(Index));
+
+        }
     }
 }
