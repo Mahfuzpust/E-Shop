@@ -43,7 +43,7 @@ namespace E_Shop.Areas.Admin.Controllers
         }
 
         //Edit GET
-        public IActionResult Edit(int id)
+        public IActionResult Edit(int? id)
         {
             if(id == null)
             {
@@ -75,7 +75,7 @@ namespace E_Shop.Areas.Admin.Controllers
         }
 
         //Get Method Product Types Details
-        public IActionResult Details(int id)
+        public IActionResult Details(int? id)
         {
             if (id == null)
             {
