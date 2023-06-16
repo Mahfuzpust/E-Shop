@@ -24,6 +24,10 @@
                     <th>Id</th>
                     <th>Name</th>
                     <th>Image</th>
+                    <th>Description</th>
+                    <th>price</th>
+                    <th>ProductColor</th>
+                    <th>IsActive</th>
                     <th></th>
                     <th>Action</th>
                 </tr>
@@ -32,7 +36,11 @@
                     <tr class="text-center">
                         <td>@data.Id</td>
                         <td>@data.Name</td>
-                        <td><img src="@data.ImagePath" height="100;" width="100;" /> </td>
+                        <td><img src="@data.ImagePath" height="100px;" width="100px;" /> </td>
+                        <td>@data.Description</td>
+                        <td>@data.price</td>
+                        <td>@data.ProductColor</td>
+                        <td>@data.IsActive</td>
                         <td>
                            <partial name="_ButtonPartial" model="@data.Id" />
                         </td>

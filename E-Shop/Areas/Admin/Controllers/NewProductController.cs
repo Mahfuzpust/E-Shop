@@ -42,6 +42,11 @@ namespace E_Shop.Areas.Admin.Controllers
                 {
                     Name = model.Name,
                     ImagePath = filePath,
+                    Description = model.Description,
+                    price = model.price,
+                    ProductColor= model.ProductColor,
+                    IsActive= model.IsActive
+                    
                 };
                 dBContext.Add(data);
                 dBContext.SaveChanges();
